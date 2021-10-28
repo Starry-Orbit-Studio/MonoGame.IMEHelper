@@ -1,4 +1,4 @@
-﻿#if !WINDOWSDX
+﻿#if !WINDOWSDX && !XNA
 using System;
 
 using Microsoft.Xna.Framework;

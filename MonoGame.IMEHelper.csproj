@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--<TargetFrameworks Condition="'$(Platform)'!='WindowsDX'">$(TargetFrameworks);net5.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(Platform)'=='WindowsDX'">$(TargetFrameworks);net5.0-windows</TargetFrameworks>-->
+    <Platforms>SharpDX;WindowsGL;XNAFramework;FNA</Platforms>
+    <BaseOutputPath>bin\$(ProjectPlatform)</BaseOutputPath>
+    <Description>This is a netstandard package with IME implementation of Windows, MacOS and Linux with SDL2.</Description>
+    <PackageTags>monogame;fna;imehelper</PackageTags>
+    <PackageProjectUrl>https://github.com/Starry-Orbit-Studio/MonoGame.IMEHelper</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <Authors>ryancheung</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.2-$(Platform)</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <TargetFramework Condition="'$(Platform)' == 'XNAFramework'">net40</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Platform Condition="'$(Platform)'==''">SharpDX</Platform>
+    <UseWindowsForms Condition="'$(Platform)'=='SharpDX'">true</UseWindowsForms>
+
+    <DefineConstants Condition="'$(Platform)'=='SharpDX'">$(DefineConstants);WINDOWSDX</DefineConstants>
+    <DefineConstants Condition="'$(Platform)'=='WindowsGL'">$(DefineConstants);DESKTOPGL</DefineConstants>
+    <DefineConstants Condition="'$(Platform)'=='XNAFramework'">$(DefineConstants);XNA</DefineConstants>
+    <DefineConstants Condition="'$(Platform)'=='FNA'">$(DefineConstants);FNA</DefineConstants>
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildProjectDirectory)\..\build\Framework.props" />
+  
+</Project>
