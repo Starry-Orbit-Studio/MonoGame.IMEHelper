@@ -1,4 +1,4 @@
-﻿#if WINDOWSDX
+﻿#if WINDOWSDX || XNA
 using Microsoft.Xna.Framework;
 using System;
 using System.Runtime.InteropServices;

@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -23,6 +24,15 @@ namespace MonoGame.IMEHelper
 
                 _ImplInstance = value;
             }
+        }
+
+        public static IMEHandler CreateIMEHandler(Game game)
+        {
+#if WINDOWSDX || XNA
+            return new WinFormsIMEHandler(game, true);
+#elif DESKTOPGL || FNA
+            return new SdlIMEHandler(game, true);
+#endif
         }
 
         /// <summary>

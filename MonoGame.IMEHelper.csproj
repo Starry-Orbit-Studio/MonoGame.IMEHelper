@@ -21,7 +21,7 @@
 
   <PropertyGroup>
     <Platform Condition="'$(Platform)'==''">SharpDX</Platform>
-    <UseWindowsForms Condition="'$(Platform)'=='SharpDX'">true</UseWindowsForms>
+    <UseWindowsForms Condition="'$(Platform)'=='SharpDX' OR '$(Platform)'=='XNAFramework'">true</UseWindowsForms>
 
     <DefineConstants Condition="'$(Platform)'=='SharpDX'">$(DefineConstants);WINDOWSDX</DefineConstants>
     <DefineConstants Condition="'$(Platform)'=='WindowsGL'">$(DefineConstants);DESKTOPGL</DefineConstants>
