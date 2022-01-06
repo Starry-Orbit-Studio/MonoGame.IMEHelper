@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <!--<TargetFrameworks Condition="'$(Platform)'!='WindowsDX'">$(TargetFrameworks);net5.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(Platform)'=='WindowsDX'">$(TargetFrameworks);net5.0-windows</TargetFrameworks>-->
+    <TargetFrameworks>net40;net45;netstandard2.0;net5.0;net6.0</TargetFrameworks>
     <Platforms>SharpDX;WindowsGL;XNAFramework;FNA</Platforms>
     <BaseOutputPath>bin\$(ProjectPlatform)</BaseOutputPath>
     <Description>This is a netstandard package with IME implementation of Windows, MacOS and Linux with SDL2.</Description>
@@ -14,21 +13,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.2-$(Platform)</Version>
   </PropertyGroup>
-  <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-    <TargetFramework Condition="'$(Platform)' == 'XNAFramework'">net40</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <Platform Condition="'$(Platform)'==''">SharpDX</Platform>
-    <UseWindowsForms Condition="'$(Platform)'=='SharpDX' OR '$(Platform)'=='XNAFramework'">true</UseWindowsForms>
-
-    <DefineConstants Condition="'$(Platform)'=='SharpDX'">$(DefineConstants);WINDOWSDX</DefineConstants>
-    <DefineConstants Condition="'$(Platform)'=='WindowsGL'">$(DefineConstants);DESKTOPGL</DefineConstants>
-    <DefineConstants Condition="'$(Platform)'=='XNAFramework'">$(DefineConstants);XNA</DefineConstants>
-    <DefineConstants Condition="'$(Platform)'=='FNA'">$(DefineConstants);FNA</DefineConstants>
-  </PropertyGroup>
-
-  <Import Project="$(MSBuildProjectDirectory)\..\build\Framework.props" />
+  
+  <Import Project=" $([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\..\configs\Engines\Common.props')) " />
   
 </Project>
